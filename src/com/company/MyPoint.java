@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Objects;
+
 public class MyPoint {
     private int x;
     private int y;
@@ -55,4 +57,22 @@ public class MyPoint {
         return distance(0,0);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyPoint myPoint = (MyPoint) o;
+        return x == myPoint.x &&
+                y == myPoint.y;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 31*result + x;
+        result = 31*result + y;
+
+        return result;
+    }
 }

@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Objects;
+
 public class Rectangle {
     private float length = 1.0f;
     private float width = 1.0f;
@@ -42,5 +44,24 @@ public class Rectangle {
                 "length=" + length +
                 ",width=" + width +
                 ']';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rectangle rectangle = (Rectangle) o;
+        return Float.compare(length,rectangle.length) == 0 &&
+                Float.compare(width,rectangle.width) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 31*result + Float.floatToIntBits(length);
+        result = 31*result + Float.floatToIntBits(width);
+
+        return result;
     }
 }

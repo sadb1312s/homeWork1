@@ -2,6 +2,7 @@ package com.company;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Book {
     private String name;
@@ -65,5 +66,28 @@ public class Book {
             }
         }
         return names;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Double.compare(price, book.price) == 0 &&
+                qty == book.qty &&
+                name.equals(book.name) &&
+                Arrays.equals(authors, book.authors);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 31*result + name.hashCode();
+        result = 31*result + Arrays.hashCode(authors);
+        result = 31*result + Double.hashCode(price);
+        result = 31*result + qty;
+
+        return result;
     }
 }

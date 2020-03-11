@@ -3,10 +3,7 @@ package com.company;
 import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class MyTriangle {
     private MyPoint v1;
@@ -51,5 +48,26 @@ public class MyTriangle {
             return "Isosceles";
         else
             return "Scalene";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyTriangle triangle = (MyTriangle) o;
+        return v1.equals(triangle.v1) &&
+                v2.equals(triangle.v2) &&
+                v3.equals(triangle.v3);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 31 * result + v1.hashCode();
+        result = 31 * result + v2.hashCode();
+        result = 31 * result + v3.hashCode();
+
+        return result;
     }
 }
