@@ -1,6 +1,4 @@
-package com.company;
-
-import java.util.Objects;
+package com.company.figures;
 
 public class Rectangle {
     private float length = 1.0f;

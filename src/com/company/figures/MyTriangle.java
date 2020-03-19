@@ -1,9 +1,6 @@
-package com.company;
+package com.company.figures;
 
-import java.lang.reflect.Array;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.*;
 
 public class MyTriangle {
     private MyPoint v1;
@@ -34,20 +31,28 @@ public class MyTriangle {
     }
 
     public String getType(){
-        double e1 = v1.distance(v2);
-        double e2 = v2.distance(v3);
-        double e3 = v3.distance(v1);
+        //Double.compare() or BigDecimal.compareTo() or like as Math.abs(d1-d2) <= 0.000001 ???
+        BigDecimal edge1 = new BigDecimal(v1.distance(v2));
+        BigDecimal edge2 = new BigDecimal(v2.distance(v3));
+        BigDecimal edge3 = new BigDecimal(v3.distance(v1));
 
-        System.out.println(e1);
-        System.out.println(e2);
-        System.out.println(e3);
-
-        if(e1 == e2 && e1 == e3)
+        /*if(e1 == e2 && e1 == e3)
             return "Equilateral";
         if (e1 == e2 || e2 == e3 || e3 == e1)
             return "Isosceles";
         else
-            return "Scalene";
+            return "Scalene";*/
+
+        if(edge1.compareTo(edge2) == 0 && edge1.compareTo(edge3) == 0){
+            return TriangleTypes.Equilateral.toString();
+        }
+        if(edge1.compareTo(edge2) == 0 || edge2.compareTo(edge3) == 0 || edge3.compareTo(edge1) == 0){
+            return TriangleTypes.Isosceles.toString();
+        } else {
+            return TriangleTypes.Scalene.toString();
+        }
+
+
     }
 
     @Override
@@ -69,5 +74,19 @@ public class MyTriangle {
         result = 31 * result + v3.hashCode();
 
         return result;
+    }
+
+    private enum TriangleTypes{
+        Equilateral("Equilateral"),Isosceles("Isosceles"),Scalene("Scalene");
+
+        private String name;
+        TriangleTypes(String s){
+            this.name = s;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
     }
 }

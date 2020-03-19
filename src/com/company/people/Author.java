@@ -1,6 +1,4 @@
-package com.company;
-
-import java.util.Objects;
+package com.company.people;
 
 public class Author {
     private String name;

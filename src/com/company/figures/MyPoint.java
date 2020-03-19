@@ -1,6 +1,4 @@
-package com.company;
-
-import java.util.Objects;
+package com.company.figures;
 
 public class MyPoint {
     private int x;

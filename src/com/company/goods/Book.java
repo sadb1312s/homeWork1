@@ -1,8 +1,8 @@
-package com.company;
+package com.company.goods;
 
-import java.lang.reflect.Array;
+import com.company.people.Author;
+
 import java.util.Arrays;
-import java.util.Objects;
 
 public class Book {
     private String name;

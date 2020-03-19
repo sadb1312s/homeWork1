@@ -1,6 +1,12 @@
 package com.company;
 
-import java.util.SortedMap;
+import com.company.figures.Circle;
+import com.company.figures.MyPoint;
+import com.company.figures.MyTriangle;
+import com.company.figures.Rectangle;
+import com.company.goods.Book;
+import com.company.people.Author;
+import com.company.people.Employee;
 
 public class Main {
 
